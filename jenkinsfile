@@ -10,15 +10,15 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh 'mvn -v'
+                sh 'mvn clean package'
                 archiveArtifacts artifacts: 'dist/reactiveApp.zip'
             }
         }
-		
-		stage("Testing") {
+
+/*		stage("Testing") {
       parallel {
         stage("Unit Tests") {
-          agent { docker 'openjdk:7-jdk-alpine' }
+          agent { docker 'openjdk:8-jdk-alpine' }
           steps {
             sh 'java -version'
           }
@@ -36,6 +36,7 @@ pipeline {
         }
       }
     }
+    */
 
     stage("Deploy") {
       steps {
@@ -44,5 +45,3 @@ pipeline {
     }
   }
 }
-
- 
