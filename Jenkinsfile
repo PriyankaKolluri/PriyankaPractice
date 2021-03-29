@@ -10,8 +10,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh 'mvn clean package'
-                archiveArtifacts artifacts: 'dist/reactiveApp.zip'
+                sh ' ' '
+                 mvn clean package
+                 ls target
+                 ' ' '
+                 junit 'build/test-results/test/*.xml'
+                 archiveArtifacts artifacts: 'dist/reactiveApp.zip'
             }
         }
 
