@@ -10,10 +10,6 @@ pipeline {
         IS_SNAPSHOT = mavenProps().getVersion().endsWith("-SNAPSHOT")
         GIT_TAG_COMMIT = sh(script: 'git describe --tags --always', returnStdout: true).trim()
     }
-    tools {
-        maven 'apache-maven-3.6.3'
-        jdk 'jdk-1.8.0.282'
-    }
 
     stages {
         stage('Build') {
