@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    environment {
 
-        GIT_TAG_COMMIT = sh(script: 'git describe --tags --always', returnStdout: true).trim()
-    }
     stages {
         stage('Build') {
             steps {
